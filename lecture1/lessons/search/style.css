@@ -1,0 +1,75 @@
+/* style.css */
+
+.logo {
+    display: block;
+    margin: 0 auto; 
+    margin-bottom: 20px;
+}
+
+.search-container {
+    text-align: center; 
+}
+
+.search-bar {
+    width: 70%;
+    padding: 8px;
+    border: 1px solid gray;
+    border-radius: 20px;
+    margin-bottom: 8px;
+}
+
+.search-button {
+    padding: 8px 30px;
+    border: none;
+    background-color: rgb(54, 118, 214);
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto; /* Center horizontally */
+    margin-top: 5px; /* Add top margin to separate buttons */
+}
+
+.link-container2 {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.link {
+    margin-top: 1px;
+    display: block;
+    text-decoration: none;
+    color: blue;
+    padding: 20px;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.back-and-others {
+    color: black;
+    text-align: right;
+    margin-top: 1px;
+    margin-right: 2px;
+}
+
+.advanced-search-container {
+    max-width: 70%;
+    margin: 0 auto;
+}
+
+.advanced-search-label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.advanced-search-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid gray;
+    border-radius: 8px;
+    margin-top: 5px;
+}

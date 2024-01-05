@@ -1,33 +1,26 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By  # Import the By class
+from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 import chromedriver_autoinstaller
+import pandas as pd
 
-# Automatically install ChromeDriver based on the installed Chrome browser version
 chromedriver_autoinstaller.install()
 
 url = 'https://submit.cs50.io/courses/1202/'
 github_username = 'Kareem82kh'
 github_password = 'HandsomeKareem82!!'
 
-# Start a headless browser session using Selenium
 chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument('--headless')  # Optional: Run in headless mode
-chrome_options.add_argument('--disable-gpu')  # Optional: Disable GPU acceleration
-
-# Specify the path to the Google Chrome executable
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--disable-gpu')
 chrome_options.binary_location = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
-
-# Specify the path to ChromeDriver (this is optional if using chromedriver_autoinstaller)
 chromedriver_path = chromedriver_autoinstaller.install()
 
-# Initialize the WebDriver without the 'executable_path' argument
 driver = webdriver.Chrome(options=chrome_options)
 
 driver.get(url)
 
-# Use find_element() instead of find_element_by_id()
 username_input = driver.find_element(By.ID, 'login_field')
 password_input = driver.find_element(By.ID, 'password')
 
@@ -44,9 +37,13 @@ driver.quit()
 soup = BeautifulSoup(html_source, 'html.parser')
 
 paragraphs = soup.find_all('p')
-for paragraph in paragraphs:
-    print(paragraph.get_text())
+paragraph_texts = [paragraph.get_text() for paragraph in paragraphs]
 
 links = soup.find_all('a')
-for link in links:
-    print(link['href'])
+link_hrefs = [link['href'] for link in links]
+
+df = pd.DataFrame({'Paragraphs': paragraph_texts, 'Links': link_hrefs})
+
+df.to_csv('cs50_results.csv', index=False)
+
+print('Results exported to cs50_results.csv')

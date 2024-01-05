@@ -15,13 +15,14 @@ chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument('--headless')  # Optional: Run in headless mode
 chrome_options.add_argument('--disable-gpu')  # Optional: Disable GPU acceleration
 
-# Set the Chrome binary location
+# Specify the path to the Google Chrome executable
 chrome_options.binary_location = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 
 # Specify the path to ChromeDriver (this is optional if using chromedriver_autoinstaller)
 chromedriver_path = chromedriver_autoinstaller.install()
 
-driver = webdriver.Chrome(executable_path=chromedriver_path, options=chrome_options)
+# Initialize the WebDriver without the 'executable_path' argument
+driver = webdriver.Chrome(options=chrome_options)
 
 driver.get(url)
 

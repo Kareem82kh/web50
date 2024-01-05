@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 import chromedriver_autoinstaller
 import pandas as pd
+import os
 
 chromedriver_autoinstaller.install()
 
@@ -44,6 +45,12 @@ link_hrefs = [link['href'] for link in links]
 
 df = pd.DataFrame({'Paragraphs': paragraph_texts, 'Links': link_hrefs})
 
-df.to_csv('cs50_results.csv', index=False)
+# Get the user's home directory and join it with the "Downloads" folder
+downloads_folder = os.path.join(os.path.expanduser("~"), "Downloads")
 
-print('Results exported to cs50_results.csv')
+# Specify the path to save the CSV file in the "Downloads" folder
+save_path = os.path.join(downloads_folder, 'cs50_results.csv')
+
+df.to_csv(save_path, index=False)
+
+print(f'Results exported to {save_path}')

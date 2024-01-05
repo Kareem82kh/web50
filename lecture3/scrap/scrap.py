@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By  # Import the By class
 from bs4 import BeautifulSoup
 import chromedriver_autoinstaller
 
@@ -26,8 +27,9 @@ driver = webdriver.Chrome(options=chrome_options)
 
 driver.get(url)
 
-username_input = driver.find_element_by_id('login_field')
-password_input = driver.find_element_by_id('password')
+# Use find_element() instead of find_element_by_id()
+username_input = driver.find_element(By.ID, 'login_field')
+password_input = driver.find_element(By.ID, 'password')
 
 username_input.send_keys(github_username)
 password_input.send_keys(github_password)

@@ -7,4 +7,4 @@ def index(request):
 def kareem(request):
     return HttpResponse("Hello, Kareem!")
 def greet(request, name):
-     return HttpResponse(f"Hello, {name}!")
+    return HttpResponse(f"Hello, {name}!")

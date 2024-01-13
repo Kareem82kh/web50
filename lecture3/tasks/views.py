@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django import forms
+from django.http import HttpResponseRedirect 
+from django.urls import reverse 
 
 tasks = [ "Task1", "Task2", "Task3"]
 
@@ -17,6 +19,7 @@ def add(request):
         if form.is_valid():
             task = form.cleaned_data["task"]
             tasks.append(task)
+            return HttpResponseRedirect(revers("tasks:index"))
         else:
             return render(request, "tasks/add.html", {
                 "form": form

@@ -16,6 +16,7 @@ def index(request):
     })
 
 def add(request):
+    form = NewTaskForm()
     if request.method == "POST":
         form = NewTaskForm(request.POST)
         if form.is_valid():

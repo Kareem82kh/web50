@@ -6,7 +6,6 @@ from django.urls import reverse
 
 class NewTaskForm(forms.Form):
     task = forms.CharField(label="New Task")
-    priority = forms.IntegerField(label="Priority", min_value=1, max_value=10)
 
 def index(request):
     if "tasks" not in request.session:
